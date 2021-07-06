@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt upgrade -y
 
-# Install Dependencies.
+# install dependencies.
 RUN apt install \
     nginx \
     composer \
@@ -16,7 +16,7 @@ RUN apt install \
     php-dev \
     --yes
 
-#install mcrypt library    
+# install mcrypt library    
 RUN apt-get install -y libmcrypt-dev \
     && pecl install mcrypt \
     && echo "extension=mcrypt.so" >> "/etc/php/7.4/fpm/php.ini"
@@ -26,7 +26,7 @@ COPY notejam/ /app
 RUN chown www-data /app -R
 
 COPY docker/.env.php /app/
-#COPY docker/supervisord-$ENVIRON.conf /supervisord.conf
+# COPY docker/supervisord-$ENVIRON.conf /supervisord.conf
 
 # install CloudWatch Agent and enable logging
 # ENV RUN_IN_CONTAINER="True"
@@ -45,7 +45,7 @@ RUN chown www-data /etc/nginx/sites-enabled/default
 COPY docker/migrate.sh /migrate.sh
 RUN chmod +x /migrate.sh
 
-# supervisord is needed to run multiple processes inside the container. Like cloudwatch agent  
+# supervisord is needed to run multiple processes inside the container.i.e cloudwatch agent  
 # # RUN mkdir -p /var/log/supervisor
 # COPY docker/supervisord-$ENVIRON.conf /supervisord.conf
 
