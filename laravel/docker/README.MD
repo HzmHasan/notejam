@@ -1,6 +1,6 @@
-# APP setup
+# Docker build
 
-The deployment currently uses a single docker container to run the APP and which connects to an external postgresql DB. The container could also include everything that is needed additionally like cloudwatch logging agents. This is a simple approach.
+The deployment uses a single docker container to run the APP using Nginx. The app connects to an external postgresql DB. The container could also include everything that is needed additionally like cloudwatch logging agents. This is a simple approach.
 
 In order to run multiple processes in a docker container at the same time we could use `supervisor` (see `supervisor-[env].json`).
 
