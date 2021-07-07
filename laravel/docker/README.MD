@@ -10,5 +10,5 @@ The following environment varaibles are used by the build script:
 - $IMAGE   : The name of the docker image 
 - $CI_COMMIT_SHA : This is the tag of the image. It can be anything however, as the name suggests, it is meant to be the commit sha that you are building.
 
-Please note that before building you should copy the file .env.example.php to .env.php and adjusted the values to include the correct connection information to postgreSQL DB.
+Please note that before building you should copy the file .env.example.php to .env.php and adjust the values to include the correct connection information to postgreSQL DB.
 
