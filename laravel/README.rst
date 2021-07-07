@@ -1,15 +1,75 @@
 ****************
 Notejam: Laravel
 ****************
-
 Notejam application implemented using `Laravel <http://laravel.com/>`_ framework.
 
 Laravel version: 4.1
 
+==========================
+Project Structure
+==========================
+- notejam folder includes the source code of the app
+- docker includes scripts and configs for building a docker image of the app.
+- docs includes desciption and presentation about the suggested solution.
 
 ==========================
-Installation and launching
+Build and run docker image
 ==========================
+-----
+Clone
+-----
+
+Clone the repo:
+
+.. code-block:: bash
+
+    $ git clone git@github.com:komarserjio/notejam.git YOUR_PROJECT_DIR/
+
+---------
+DataBase
+---------
+
+Install postgreSQL and create a DB called notejam.
+
+
+Copy the example config and adjust it based on your setup.
+
+.. code-block:: bash
+
+    $ cd YOUR_PROJECT_DIR/laravel/notejam/
+    $ cp docker/.env.example.php docker.env.php
+    
+-------------
+Build docker
+-------------
+
+The following environment varaibles are used by the build script:
+
+$ENVIRON : The name of the environment that you are building for (ex. local, staging, production)
+$IMAGE   : The name of the docker image 
+$CI_COMMIT_SHA : This is the tag of the image. It can be anything however, as the name suggests, it is meant to be the commit sha that you want to build.
+
+.. code-block:: bash
+    $ export ENVIRON=local
+    $ export IMAGE=notejam
+    $export CI_COMMIT_SHA=1
+    $ cd YOUR_PROJECT_DIR/laravel/notejam/
+    $ ./docker/build.sh
+
+-----------
+Run docker
+-----------
+
+you can run a container directly
+
+.. code-block:: bash
+    $ docker run -d --name notejam -p 80:80 notejam:1
+
+or you can run in kuernetes using the 'deploy.sh' script in deployment/kuberentes
+
+===========================================
+Installation and launching for development
+===========================================
 
 -----
 Clone
